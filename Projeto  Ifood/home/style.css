@@ -1,0 +1,305 @@
+/* ===== style.css ===== */
+/* CSS EXTERNO - COMPLETO PARA O PROJETO DELIVERYEXPRESS */
+/* Crie um arquivo style.css na mesma pasta do HTML e cole este conteúdo */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #d1d5db;
+    font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.document-wrapper {
+    max-width: 900px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    border-radius: 4px 4px 12px 12px;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+/* Simulação de páginas do PDF, com textura sutil */
+.pdf-page {
+    background: white;
+    padding: 40px 35px;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+}
+
+.pdf-page:last-child {
+    border-bottom: none;
+}
+
+/* cabeçalho institucional */
+.header-institute {
+    font-size: 14px;
+    color: #1e3a5f;
+    border-bottom: 2px solid #fcb43a;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.header-institute h2 {
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    color: #0b2b4a;
+}
+
+.project-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 15px 0 5px;
+}
+
+.subhead {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    border-left: 5px solid #fcb43a;
+    padding-left: 12px;
+    margin: 20px 0 15px;
+    font-weight: 600;
+}
+
+/* estilização de requisitos */
+.req-func, .req-naofunc {
+    background: #f8fafc;
+    border-left: 4px solid #3b7fbd;
+    padding: 12px 18px;
+    margin: 12px 0;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.req-naofunc {
+    border-left-color: #64748b;
+}
+
+.badge {
+    display: inline-block;
+    background: #e9ecef;
+    padding: 4px 10px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: 0.3px;
+}
+
+.tag-prioridade {
+    background: #ffedd5;
+    color: #9a3412;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.usuario-card {
+    background: #f1f5f9;
+    padding: 15px;
+    border-radius: 16px;
+    margin-top: 12px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    background: #1e3a5f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.tabela-aprov {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 20px;
+    border: 1px solid #cbd5e1;
+}
+
+.tabela-aprov th, .tabela-aprov td {
+    padding: 12px 8px;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+}
+
+.tabela-aprov th {
+    background: #e6f0fa;
+    color: #0c4a6e;
+}
+
+.imagem-representativa {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0 15px;
+    flex-wrap: wrap;
+}
+
+.img-card {
+    background: white;
+    border-radius: 20px;
+    padding: 18px 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    flex: 1 1 150px;
+}
+
+.img-card i {
+    font-size: 3.2rem;
+    color: #fcb43a;
+    margin-bottom: 8px;
+}
+
+.img-card span {
+    display: block;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.img-card small {
+    color: #475569;
+}
+
+.page-number {
+    text-align: right;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 25px;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 10px;
+}
+
+/* sumário personalizado */
+.sumario {
+    background: #f8fafc;
+    padding: 18px 25px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    columns: 2;
+    column-gap: 40px;
+    margin-bottom: 10px;
+}
+
+.sumario li {
+    list-style: none;
+    margin-bottom: 6px;
+}
+
+/* ícones e marcadores */
+.fa-ul {
+    margin-left: 1.7em;
+}
+
+a {
+    color: #0369a1;
+    text-decoration: none;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 25px 0 10px;
+}
+
+.btn-interativo {
+    background: #fcb43a;
+    border: none;
+    color: #0b2b4a;
+    padding: 12px 24px;
+    font-weight: 700;
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.btn-interativo:hover {
+    background: #ffa61a;
+    box-shadow: 0 6px 14px rgba(252, 180, 58, 0.3);
+}
+
+/* simulação página 2 (símbolos) – interpretamos como ícones de delivery */
+.pagina-simbolos {
+    background: linear-gradient(145deg, #f1f5f9 0%, #ffffff 100%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 25px;
+    font-size: 2.2rem;
+    color: #1e3a5f;
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+    .pdf-page {
+        padding: 30px 20px;
+    }
+    
+    .sumario {
+        columns: 1;
+        column-gap: 0;
+    }
+    
+    .imagem-representativa {
+        gap: 12px;
+    }
+    
+    .img-card {
+        flex: 1 1 120px;
+    }
+    
+    .header-institute {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+    
+    .project-title {
+        font-size: 1.3rem;
+    }
+    
+    .usuario-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .btn-interativo {
+        width: 100%;
+        justify-content: center;
+    }
+}

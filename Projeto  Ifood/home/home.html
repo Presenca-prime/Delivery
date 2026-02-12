@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF – Projeto DeliveryExpress</title>
+    <!-- Fonte clean e ícones representativos (Font Awesome via CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS EXTERNO SEPARADO (link para arquivo .css) -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Este arquivo HTML está vinculado a um CSS externo. 
+         Para funcionar, crie um arquivo chamado style.css na mesma pasta e cole o conteúdo CSS fornecido -->
+</head>
+
+<body>
+    <!-- Documento principal – Projeto DeliveryExpress -->
+    <div class="document-wrapper">
+
+        <!-- ===== Página 1 – Capa ===== -->
+        <div class="pdf-page">
+            <div class="header-institute">
+                <h2><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> CENTRO EDUCACIONAL FUCAPI</h2>
+                <span style="font-weight: 500;">Curso de informática · Coord. técnico</span>
+            </div>
+            <div
+                style="display: flex; justify-content: center; align-items: center; flex-direction: column; min-height: 240px;">
+                <div style="background: #fcb43a20; padding: 20px 40px; border-radius: 60px 20px; margin: 20px 0;">
+                    <i class="fas fa-motorcycle" style="font-size: 4rem; color: #1e3a5f; margin-right: 15px;"></i>
+                    <i class="fas fa-pizza-slice" style="font-size: 4rem; color: #b45309; margin-right: 15px;"></i>
+                    <i class="fas fa-box-open" style="font-size: 4rem; color: #2d6a4f;"></i>
+                </div>
+                <div class="project-title">
+                    🍕 DELIVERY EXPRESS · FUCAPI
+                </div>
+                <div style="font-size: 1.2rem; font-weight: 300; color: #2d3c49;">
+                    Documento Levantamento de Requisitos
+                </div>
+                <div
+                    style="background: #0b2b4a; color: white; padding: 6px 30px; border-radius: 40px; margin-top: 25px; font-weight: 600;">
+                    Versão 1.0 · Equipe delivery
+                </div>
+            </div>
+            <div class="page-number">Página 1/5</div>
+        </div>
+
+        <!-- ===== Página 2 – Ícones representativos / Simulação dos quadrados (agora ilustrações delivery) ===== -->
+        <div class="pdf-page pagina-simbolos">
+            <div style="text-align: center; width: 100%; margin-bottom: 10px;">
+                <span
+                    style="background: #1e3a5f; color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.9rem; letter-spacing: 2px;"><i
+                        class="fas-regular fa-clipboard"></i> REPRESENTAÇÃO VISUAL DO SISTEMA</span>
+            </div>
+            <div class="imagem-representativa" style="margin-top: 0; width: 100%;">
+                <div class="img-card"><i class="fas fa-shopping-cart"></i><span>Pedidos</span><small>em tempo
+                        real</small></div>
+                <div class="img-card"><i class="fas fa-truck"></i><span>Entregas</span><small>roteirização</small></div>
+                <div class="img-card"><i class="fas fa-arrow-alt-circle-left"></i><span>Reembolso</span><small>estorno
+                        automático</small></div>
+                <div class="img-card"><i class="fas fa-star"></i><span>Avaliação</span><small>entregadores</small></div>
+                <div class="img-card"><i class="fas fa-map-marker-alt"></i><span>Rastreio</span><small>live
+                        tracking</small></div>
+            </div>
+            <div
+                style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; color: #2c3e50; font-size: 1rem;">
+                <span class="badge"><i class="fas-regular fa-circle-check"></i> 35 entregas/hora</span>
+                <span class="badge"><i class="fas fa-clock"></i> 28min médios</span>
+                <span class="badge"><i class="fas fa-credit-card"></i> reembolso em até 2h</span>
+            </div>
+            <!-- preserva espirito dos quadrados, mas com sentido -->
+            <div
+                style="font-size: 0.8rem; color: #4b5563; margin-top: 25px; text-align: center; border-top: 1px solid #ccc; padding-top: 15px;">
+                <i class="fas fa-solid fa-square"></i> <i class="fas fa-solid fa-square"></i> <i
+                    class="fas fa-regular fa-square"></i>
+                ícones de pedido, entrega, reembolso — interação simulada via cards.
+            </div>
+            <div class="page-number" style="margin-top: 5px;">Página 2/5 (painel de interação)</div>
+        </div>
+
+        <!-- ===== Página 3 – Sumário / Estrutura (conteúdo preenchido) ===== -->
+        <div class="pdf-page">
+            <div class="header-institute">
+                <span style="font-weight: 600;">CENTRO EDUCACIONAL FUCAPI · informática</span>
+                <span>Coordenação de curso técnico</span>
+            </div>
+            <div style="margin-top: 10px;">
+                <span class="project-title" style="font-size: 1.4rem;">📋 SUMÁRIO EXECUTIVO</span>
+            </div>
+            <div class="sumario">
+                <ul class="fa-ul">
+                    <li><span class="fa-li"><i class="fas fa-pizza-slice"></i></span>1. Introdução
+                        .......................................................... 01</li>
+                    <li><span class="fa-li"><i class="fas fa-glasses"></i></span>2. Visão geral desse documento
+                        ........................ 01</li>
+                    <li><span class="fa-li"><i class="fas fa-book"></i></span>3. Convenções, termos e abreviações
+                        .............. 01</li>
+                    <li><span class="fa-li"><i class="fas fa-tags"></i></span>4. Identificações dos requisitos
+                        ........................ 01</li>
+                    <li><span class="fa-li"><i class="fas fa-flag"></i></span>5. Prioridade dos requisitos
+                        .............................. 01</li>
+                    <li><span class="fa-li"><i class="fas fa-link"></i></span>6. Referências
+                        ....................................................... 01</li>
+                    <li><span class="fa-li"><i class="fas fa-cog"></i></span>7. Descrição geral do sistema
+                        .......................... 01</li>
+                    <li><span class="fa-li"><i class="fas fa-users"></i></span>8. Descrição dos usuários
+                        ................................. 01</li>
+                    <li><span class="fa-li"><i class="fas fa-code"></i></span>9. Requisitos funcionais
+                        .................................... 01</li>
+                    <li><span class="fa-li"><i class="fas fa-shield"></i></span>10. Requisitos não funcionais
+                        .......................... 01</li>
+                    <li><span class="fa-li"><i class="fas fa-check-double"></i></span>11. Aprovação
+                        ...................................................... 01</li>
+                </ul>
+            </div>
+            <div style="margin-top: 15px; background: #fff3cd; padding: 8px 15px; border-radius: 10px;">
+                <i class="fas fa-motorcycle"></i> <strong>DeliveryExpress</strong> · Versão dos requisitos baseada em
+                entregas, pedidos e reembolso.
+            </div>
+            <div class="page-number">Página 3/5 · Nome do projeto: DeliveryExpress</div>
+        </div>
+
+        <!-- ===== Página 4 – Conteúdo denso: introdução, visão, descrições, requisitos funcionais e não funcionais ===== -->
+        <div class="pdf-page">
+            <div style="display: flex; justify-content: space-between;">
+                <h3 style="color: #0b2b4a; border-bottom: 3px solid #fcb43a; padding-bottom: 6px;">1. Introdução</h3>
+            </div>
+            <p style="background: #f9f9fb; padding: 18px; border-radius: 12px; margin-bottom: 25px;">
+                <i class="fas fa-lightbulb" style="color: #fcb43a; margin-right: 8px;"></i>
+                O <strong>DeliveryExpress</strong> nasceu da necessidade de conectar restaurantes locais, entregadores
+                autônomos e clientes finais em uma plataforma única. A idealização envolveu entrevistas com 3
+                estabelecimentos parceiros; os resultados alcançados no protótipo indicam redução de 40% no tempo médio
+                de entrega e suporte a reembolsos automatizados via análise de foto do pedido.
+            </p>
+
+            <h3 style="color: #0b2b4a; margin-top: 25px;">2. Visão geral desse documento</h3>
+            <p style="padding: 12px; background: #f1f5f9; border-radius: 10px;">
+                Este documento organiza os requisitos em visões: <strong>pedidos, entregas, reembolso</strong>. Setores
+                envolvidos: operações, TI, financeiro. A abordagem segue FURPS+ adaptado.
+            </p>
+
+            <h3 style="color: #0b2b4a; margin-top: 20px;">3. Convenções, termos e abreviações</h3>
+            <p><span class="badge">OPE</span> Operador de atendimento · <span class="badge">ENT</span> Entregador ·
+                <span class="badge">CLI</span> Cliente · <span class="badge">REEMB</span> Reembolso · <span
+                    class="badge">SLA</span> Acordo nível serviço.
+            </p>
+
+            <h3 style="color: #0b2b4a; margin-top: 20px;">4. Identificações dos requisitos</h3>
+            <p>Requisitos funcionais: <strong>[RF]</strong>; Não funcionais: <strong>[NF]</strong>. Categorias:
+                <i>pedido, entrega, financeiro</i>.
+            </p>
+
+            <h3 style="color: #0b2b4a; margin-top: 20px;">5. Prioridade dos requisitos</h3>
+            <p>Alta (Essencial), Média (Importante), Baixa (Desejável). Ex: reembolso → alta; relatório mensal → média.
+            </p>
+
+            <h3 style="color: #0b2b4a; margin-top: 20px;">6. Referências</h3>
+            <p>Atas de reunião 05/2025; benchmark iFood; documentação API de pagamento.</p>
+
+            <h3 style="color: #0b2b4a; margin-top: 25px;">7. Descrição geral do sistema</h3>
+            <div
+                style="background: #e6f0fa; padding: 14px; border-radius: 14px; display: flex; gap: 15px; flex-wrap: wrap;">
+                <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #0f172a;"></i>
+                <p><strong>DeliveryExpress</strong> é um sistema web responsivo. Gerencia pedidos, atribui entregadores,
+                    processa pagamentos e reembolsos. Tecnologias previstas: React, Node.js, PostgreSQL, Docker. Inclui
+                    módulo de estorno integrado à adquirente.</p>
+            </div>
+
+            <h3 style="color: #0b2b4a; margin-top: 25px;">8. Descrição dos usuários</h3>
+            <div class="usuario-card">
+                <div class="icon-circle"><i class="fas fa-user-tie"></i></div>
+                <div><strong>a) Usuário A – Cliente</strong><br>Solicita pedidos, acompanha entrega, pede reembolso.
+                    Cerca de 5000 usuários ativos.</div>
+            </div>
+            <div class="usuario-card">
+                <div class="icon-circle"><i class="fas fa-user-cog"></i></div>
+                <div><strong>b) Usuário B – Entregador</strong><br>Aceita corridas, visualiza rota, confirma retirada e
+                    entrega. Meta de 200 entregadores.</div>
+            </div>
+            <div class="usuario-card">
+                <div class="icon-circle"><i class="fas fa-user-headset"></i></div>
+                <div><strong>c) Usuário C – Operador</strong><br>Gerencia reembolsos, suporte, análise de disputas.
+                    (incluído além do template)</div>
+            </div>
+            <div class="usuario-card">
+                <div class="icon-circle"><i class="fas fa-store"></i></div>
+                <div><strong>d) Usuário D – Restaurante</strong><br>Confirma pedidos, atualiza cardápio. (expansão do
+                    item d)</div>
+            </div>
+            <div class="page-number">Página 4/5 · Nome do projeto: DeliveryExpress</div>
+        </div>
+
+        <!-- ===== Página 5 – Continuação: requisitos funcionais e não funcionais, aprovação + reembolso/pedidos/entregas ===== -->
+        <div class="pdf-page">
+            <h3 style="color: #0b2b4a; border-left: 6px solid #fcb43a; padding-left: 12px;">9. Requisitos funcionais
+                (pedidos, entregas, reembolso)</h3>
+            <div class="req-func">
+                <strong style="font-size: 1.1rem;">[RF001] Funcionalidade de pedido e pagamento</strong>
+                <span class="tag-prioridade"><i class="fas fa-flag"></i> Prioridade ALTA</span><br>
+                <span>Cliente seleciona itens, realiza checkout, paga via cartão ou PIX. Destinado a ator
+                    <strong>CLIENTE</strong>. Integração com gateway.</span>
+            </div>
+            <div class="req-func">
+                <strong style="font-size: 1.1rem;">[RF002] Rastreamento de entregas em tempo real</strong>
+                <span class="tag-prioridade"><i class="fas fa-flag"></i> Prioridade ALTA</span><br>
+                <span>Entregador (ator ENT) compartilha localização; cliente visualiza no mapa. Atualização a cada
+                    10s.</span>
+            </div>
+            <div class="req-func">
+                <strong style="font-size: 1.1rem;">[RF003] Solicitação de reembolso</strong>
+                <span class="tag-prioridade"><i class="fas fa-flag"></i> Prioridade ALTA</span><br>
+                <span>Cliente abre solicitação de reembolso anexando foto do problema. Operador analisa e aprova
+                    estorno. Categoria financeiro.</span>
+            </div>
+            <div class="req-func">
+                <strong style="font-size: 1.1rem;">[RF004] Gerenciamento de entregadores</strong>
+                <span class="tag-prioridade"><i class="fas fa-flag"></i> Prioridade MÉDIA</span><br>
+                <span>Administrador cadastra, bloqueia ou altera modo de disponibilidade.</span>
+            </div>
+
+            <h3 style="color: #0b2b4a; margin-top: 30px;">10. Requisitos não funcionais</h3>
+            <div style="background: #f1f5f9; padding: 10px; border-radius: 12px;"><strong>🔒 Termo A: Segurança e
+                    privacidade</strong></div>
+            <div class="req-naofunc">
+                <strong>[NF001]</strong> Autenticação 2FA para operadores (prioridade ALTA)<br>
+                <strong>[NF002]</strong> Dados de pagamento tokenizados – PCI DSS (prioridade ALTA)
+            </div>
+            <div style="background: #f1f5f9; padding: 10px; border-radius: 12px; margin-top: 15px;"><strong>⚡ Termo B:
+                    Desempenho e escalabilidade</strong></div>
+            <div class="req-naofunc">
+                <strong>[NF003]</strong> Suporte a 2000 pedidos simultâneos (prioridade MÉDIA)<br>
+                <strong>[NF004]</strong> Tempo de resposta da API < 300ms (prioridade ALTA) </div>
+                    <div style="background: #f1f5f9; padding: 10px; border-radius: 12px; margin-top: 15px;"><strong>📱
+                            Termo C: UX/Dispositivos</strong></div>
+                    <div class="req-naofunc">
+                        <strong>[NF005]</strong> Design responsivo (mobile-first) (prioridade MÉDIA)
+                    </div>
+
+                    <h3 style="color: #0b2b4a; margin-top: 30px;">11. Aprovação</h3>
+                    <table class="tabela-aprov">
+                        <tr>
+                            <th colspan="3" style="text-align: center; background: #fcb43a; color: #0b2b4a;">Aprovações
+                                - DeliveryExpress</th>
+                        </tr>
+                        <tr>
+                            <th>Integrante</th>
+                            <th>Assinatura</th>
+                            <th>Data</th>
+                        </tr>
+                        <tr>
+                            <td>Renato Freitas (DP)</td>
+                            <td><i class="fas fa-pen"></i> Renato F.</td>
+                            <td>12/02/2026</td>
+                        </tr>
+                        <tr>
+                            <td>João Gustavo (LT)</td>
+                            <td><i class="fas fa-pen"></i> J. Gustavo</td>
+                            <td>12/02/2026</td>
+                        </tr>
+                        <tr>
+                            <td>Sammy Lincon (EU)</td>
+                            <td><i class="fas fa-pen"></i> S. Lincon</td>
+                            <td>13/02/2026</td>
+                        </tr>
+                        <tr>
+                            <td>Jhonathan Monteneiro (GQ)</td>
+                            <td><i class="fas fa-pen"></i> J. Monteneiro</td>
+                            <td>13/02/2026</td>
+                        </tr>
+                        <tr>
+                            <td>Kevin Caio (GQ)</td>
+                            <td><i class="fas fa-pen"></i> K. Caio</td>
+                            <td>13/02/2026</td>
+                        </tr>
+                    </table>
+
+                    <!-- Botão interativo (simula ação no vs code / delivery) -->
+                    <div style="display: flex; justify-content: center; margin-top: 35px;">
+                        <button class="btn-interativo"
+                            onclick="alert('🛵 Pedido simulado! Sistema DeliveryExpress – Reembolso em até 2h.')">
+                            <i class="fas fa-play-circle"></i> Interagir: simular pedido / reembolso
+                        </button>
+                    </div>
+                    <div
+                        style="margin-top: 20px; font-style: italic; background: #fefce8; padding: 10px; border-radius: 12px;">
+                        <i class="fas fa-image"></i> Imagens representativas: cards de pedido, entrega, reembolso (vide
+                        página 2). Layout responsivo pronto para VS Code.
+                    </div>
+                    <div class="page-number">Página 5/5 · DeliveryExpress · v1.0</div>
+            </div>
+        </div>
+
+        <!-- rodapé explicativo: informações do projeto preenchidas -->
+        <div
+            style="max-width: 900px; color: #1f2a44; background: #fef9e7; padding: 16px 24px; border-radius: 30px; margin-top: 10px; text-align: center; border: 2px dashed #fcb43a;">
+            <i class="fas fa-check-circle" style="color: #0b2b4a;"></i>
+            <strong>Projeto DeliveryExpress</strong> · Levantamento de requisitos preenchido com: entregas, pedidos e
+            reembolso.
+            HTML + CSS externo + ícones/imagens vetoriais (Font Awesome). Disponível no VS Code. Interação via botão.
+        </div>
+
+        <script>
+            // pequeno script para mais interação: hover ou console, apenas para demonstrar
+            console.log("PDR_V1 - DeliveryExpress: documento interativo com requisitos de reembolso, pedidos e entregas. CSS separado.");
+        </script>
+</body>
+
+</html>
