@@ -1,0 +1,193 @@
+ /* === CSS separado (estilo inspirado em documento + toque técnico) === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #7f8c8d; /* fundo escuro para simular borda de "visualizador PDF" */
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.5;
+        }
+
+        .document-pdf {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 50px 55px;
+            position: relative;
+        }
+
+        /* cabeçalho estilo documento */
+        .header-doc {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .header-doc h1 {
+            font-size: 1.9rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .header-doc h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            margin-top: 5px;
+            text-decoration: underline;
+        }
+        .version-tag {
+            font-size: 1rem;
+            margin-top: 10px;
+            font-weight: bold;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            padding: 4px 0;
+            display: inline-block;
+        }
+
+        /* tabelas estilo revisões / aprovações */
+        .revision-table, .approval-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 25px;
+            font-size: 0.95rem;
+        }
+        .revision-table th, .revision-table td,
+        .approval-table th, .approval-table td {
+            border: 1.5px solid #2c3e50;
+            padding: 10px 8px;
+            vertical-align: top;
+        }
+        .revision-table th {
+            background: #ecf0f1;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .approval-table th {
+            background: #d5dbdb;
+            font-weight: 700;
+        }
+        .revision-table td, .approval-table td {
+            background-color: #fdfefe;
+        }
+
+        /* sumário simples (estilo linhas pontilhadas) */
+        .sumario {
+            margin: 30px 0 20px;
+        }
+        .sumario-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #34495e;
+            padding: 4px 0;
+            font-size: 1rem;
+        }
+        .sumario-titulo {
+            font-weight: 600;
+        }
+        .sumario-pag {
+            font-family: 'Courier New', monospace;
+        }
+
+        /* títulos de seção */
+        .secao {
+            margin-top: 30px;
+        }
+        .secao h3 {
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-bottom: 2px solid #1e2b37;
+            padding-bottom: 4px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .secao h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 20px 0 10px;
+            color: #1e4660;
+        }
+        .secao h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 15px 0 6px;
+            font-style: italic;
+        }
+
+        /* caixas de descrição (simulando o conteúdo com aspas e fundo claro) */
+        .desc-box {
+            background: #f4f6f7;
+            border-left: 6px solid #2980b9;
+            padding: 14px 18px;
+            margin: 15px 0 20px;
+            font-style: normal;
+            border-radius: 0 6px 6px 0;
+            font-size: 1rem;
+        }
+        .desc-box p {
+            margin: 0;
+        }
+        .desc-box p + p {
+            margin-top: 10px;
+        }
+
+        .requisito-item {
+            margin: 20px 0 10px 20px;
+            border-bottom: 1px dashed #b0bec5;
+            padding-bottom: 12px;
+        }
+        .req-codigo {
+            font-weight: 800;
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: #e8e8e8;
+            padding: 3px 8px;
+            display: inline-block;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .req-texto {
+            margin: 6px 0 0 25px;
+            font-size: 1.02rem;
+        }
+        .termo-tag {
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin: 25px 0 10px 0;
+            color: #2c3e50;
+            background: #dee2e5;
+            padding: 5px 12px;
+            display: inline-block;
+            border-radius: 20px;
+        }
+
+        /* tópicos de usuário */
+        .usuario-lista {
+            margin: 10px 0 15px 30px;
+        }
+        .usuario-lista li {
+            font-weight: 600;
+            list-style-type: lower-latin;
+            margin-bottom: 5px;
+        }
+
+        /* rodapé de aprovação */
+        .assinatura-linha {
+            margin-top: 25px;
+        }
+
+        /* numeração de páginas estilo sumário (estática) */
+        .only-page-num {
+            font-family: 'Courier New', monospace;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #aaa;
+            margin: 20px 0;
+        }
+    

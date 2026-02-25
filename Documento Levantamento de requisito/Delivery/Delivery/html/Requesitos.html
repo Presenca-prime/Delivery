@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(Requisitos)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #7f8c8d;
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.5;
+        }
+
+        .document-pdf {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 50px 55px;
+            position: relative;
+        }
+
+        /* cabeçalho estilo documento */
+        .header-doc {
+            text-align: right;
+            margin-bottom: 25px;
+
+        }
+
+        .header-doc h1 {
+            font-size: 1.9rem;
+            font-weight: bold;
+            letter-spacing: 0.25px;
+            text-transform: uppercase;
+        }
+
+        .header-doc h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            margin-top: 5px;
+            text-decoration: underline;
+        }
+
+        .version-tag {
+            font-size: 1rem;
+            margin-top: 10px;
+            font-weight: bold;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            padding: 4px 0;
+            display: inline-block;
+        }
+
+
+        .revision-table,
+        .approval-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 25px;
+            font-size: 0.95rem;
+        }
+
+        .revision-table th,
+        .revision-table td,
+        .approval-table th,
+        .approval-table td {
+            border: 1.5px solid #2c3e50;
+            padding: 10px 8px;
+            vertical-align: top;
+        }
+
+        .revision-table th {
+            background: #ecf0f1;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .approval-table th {
+            background: #d5dbdb;
+            font-weight: 700;
+        }
+
+        .revision-table td,
+        .approval-table td {
+            background-color: #fdfefe;
+        }
+
+
+        .sumario {
+            margin: 30px 0 20px;
+        }
+
+        .sumario-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #34495e;
+            padding: 4px 0;
+            font-size: 1rem;
+        }
+
+        .sumario-titulo {
+            font-weight: 600;
+        }
+
+        .sumario-pag {
+            font-family: 'Courier New', monospace;
+        }
+
+    
+        .secao {
+            margin-top: 30px;
+        }
+
+        .secao h3 {
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-bottom: 2px solid #1e2b37;
+            padding-bottom: 4px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .secao h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 20px 0 10px;
+            color: #1e4660;
+        }
+
+        .secao h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 15px 0 6px;
+            font-style: italic;
+        }
+
+       
+        .desc-box {
+            background: #f4f6f7;
+            border-left: 6px solid #2980b9;
+            padding: 14px 18px;
+            margin: 15px 0 20px;
+            font-style: normal;
+            border-radius: 0 6px 6px 0;
+            font-size: 1rem;
+        }
+
+        .desc-box p {
+            margin: 0;
+        }
+
+        .desc-box p+p {
+            margin-top: 10px;
+        }
+
+        .requisito-item {
+            margin: 20px 0 10px 20px;
+            border-bottom: 1px dashed #b0bec5;
+            padding-bottom: 12px;
+        }
+
+        .req-codigo {
+            font-weight: 800;
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: #e8e8e8;
+            padding: 3px 8px;
+            display: inline-block;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .req-texto {
+            margin: 6px 0 0 25px;
+            font-size: 1.02rem;
+        }
+
+        .termo-tag {
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin: 25px 0 10px 0;
+            color: #2c3e50;
+            background: #dee2e5;
+            padding: 5px 12px;
+            display: inline-block;
+            border-radius: 20px;
+        }
+
+        /* tópicos de usuário */
+        .usuario-lista {
+            margin: 10px 0 15px 30px;
+        }
+
+        .usuario-lista li {
+            font-weight: 600;
+            list-style-type: lower-latin;
+            margin-bottom: 5px;
+        }
+
+        /* rodapé de aprovação */
+        .assinatura-linha {
+            margin-top: 25px;
+        }
+
+        /* numeração de páginas estilo sumário (estática) */
+        .only-page-num {
+            font-family: 'Courier New', monospace;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #aaa;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <html>
+
+
+    <div class="document-pdf" contenteditable="true">
+        <!-- Cabeçalho principal: nome do time / projeto -->
+        <div class="header-doc">
+            <h1>Presença prime - delivery</h1>
+            <h2>Documento Levantamento de requisito</h2>
+            <div class="version-tag">Versão 1.0</div>
+        </div>
+
+        <!-- Histórico de revisões (tabela) -->
+        <table class="revision-table">
+
+
+        </table>
+
+        <!-- Sumário interativo (não links, apenas visual) -->
+        <div class="secao">
+            <h3>Sumário</h3>
+            <div class="sumario">
+                <div class="sumario-item"><span class="sumario-titulo">1. Introdução</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">2. Visão geral desse documento</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">3. Convenções, termos e abreviações</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">4. Identificações dos requisitos</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">5. Prioridade dos requisitos</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">6. Referências</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">7. Descrição geral do sistema</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">8. Descrição dos usuários</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">9. Requisitos funcionais</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">10. Requisitos não funcionais</span><span
+                        class="sumario-pag">01</span></div>
+                <div class="sumario-item"><span class="sumario-titulo">11. Aprovação</span><span
+                        class="sumario-pag">01</span></div>
+            </div>
+        </div>
+
+        <!-- 1. Introdução -->
+        <div class="secao">
+            <h3>1. Introdução</h3>
+            <div class="desc-box">
+                <p>O "Delivery" nasceu da necessidade de conectar restaurantes locais, entregadores autônomos e clientes
+                    finais em uma plataforma única. Os resultados alcançados no protótipo indicam redução de 40% no
+                    tempo médio de entrega e suporte a reembolsos automatizados via análise de foto do pedido.</p>
+            </div>
+        </div>
+
+        <!-- 2. Visão geral -->
+        <div class="secao">
+            <h3>2. Visão geral desse documento</h3>
+            <div class="desc-box">
+                <p>Este documento organiza os requisitos em visões: pedidos, entregas, reembolso. Setores envolvidos:
+                    operações, TI, financeiro. A abordagem segue FURPS+ adaptado.</p>
+            </div>
+        </div>
+
+        <!-- 3. Convenções -->
+        <div class="secao">
+            <h3>3. Convenções, termos e abreviações</h3>
+            <div class="desc-box">
+                <p>OPE Operador de atendimento · ENT Entregador · CLI Cliente · REEMB Reembolso · SLA Acordo nível
+                    serviço</p>
+            </div>
+        </div>
+
+        <!-- 4. Identificações dos requisitos -->
+        <div class="secao">
+            <h3>4. Identificações dos requisitos</h3>
+            <div class="desc-box">
+                <p>Requisitos funcionais: pedidos e pagamentos [RF]; Requisitos Não funcionais: desempenho, segurança e
+                    alta Disponibilidade [NF];</p>
+            </div>
+        </div>
+
+        <!-- 5. Prioridade dos requisitos -->
+        <div class="secao">
+            <h3>5. Prioridade dos requisitos</h3>
+            <div class="desc-box">
+                <p>Alta (Essencial), Média (Importante), Baixa (Desejável). Ex: reembolso → alta; relatório mensal →
+                    média.</p>
+            </div>
+        </div>
+
+        <!-- 6. Referências -->
+        <div class="secao">
+            <h3>6. Referências</h3>
+            <div class="desc-box">
+                <p>Atas de reunião 05/2025; benchmark iFood; documentação API de pagamento.</p>
+            </div>
+        </div>
+
+        <!-- 7. Descrição geral do sistema -->
+        <div class="secao">
+            <h3>7. Descrição geral do sistema</h3>
+            <div class="desc-box">
+                <p>"Delivery" é um sistema web responsivo. Gerencia pedidos, atribui entregadores, processa pagamentos e
+                    reembolsos. Tecnologias previstas: React, Node.js.</p>
+            </div>
+        </div>
+
+        <!-- 8. Descrição dos usuários -->
+        <div class="secao">
+            <h3>8. Descrição dos usuários</h3>
+            <div class="desc-box">
+                <p>a) Usuário A – Cliente Solicita pedidos, acompanha entrega, pede reembolso. Cerca de 1000 usuários
+                    ativos. ㅤㅤㅤb) Usuário B – Entregador Aceita corridas, visualiza rota, confirma retirada e entrega.
+                    Meta de 100 entregadores.ㅤ c) Usuário C – Operador gerencia reembolsos, suporte, análise de
+                    disputas.ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤd) Usuário D – Restaurante Confirma pedidos, atualiza cardápio.</p>
+            </div>
+
+        </div>
+
+        <!-- 9. Requisitos funcionais -->
+        <div class="secao">
+            <h3>9. Requisitos funcionais</h3>
+            <div class="desc-bx">
+
+            </div>
+
+            <div class="requisito-item">
+                <span class="req-codigo">[RF001] Funcionalidade de pedido e pagamento 01:</span>
+                <div class="req-texto">Cliente seleciona itens, realiz a checkout, paga via cartão ou PIX. Destinado a
+                    ator CLIENTE. Prioridade: alta.</div>
+            </div>
+            <div class="requisito-item">
+                <span class="req-codigo">[RF002] Rastreamento de entregas em tempo real 02:</span>
+                <div class="req-texto">Entregador (ator ENT) compartilha localização; cliente visualiza no mapa.
+                    Atualização a cada 10s.. Prioridade: média.</div>
+            </div>
+            <!-- Mantendo padrao do doc: [RF001] Requesito funcional 01 (com erro de grafia incluso) -->
+            <div class="requisito-item">
+                <span class="req-codigo">[RF003] solicitação de reembolso 03:</span>
+                <div class="req-texto">Cliente abre solicitação de reembolso anexando foto do problema. Operador analisa
+                    e aprova estorno. Categoria financeiro..</div>
+            </div>
+            <div class="requisito-item">
+                <span class="req-codigo">[RF004] Gerenciamento de entregadores 04:</span>
+                <div class="req-texto">Administrador cadastra, bloqueia ou altera modo de disponibilidade..</div>
+            </div>
+        </div>
+
+        <!-- 10. Requisitos não funcionais -->
+        <div class="secao">
+            <h3>10. Requisitos não funcionais</h3>
+            <div class="desc-bx">
+
+            </div>
+
+
+            <div class="requisito-item">
+                <span class="req-codigo">[NF001] Requisito não funcional 01:</span>
+                <div class="req-texto">Autenticação para operadores. (segurança) – prioridade alta.</div>
+            </div>
+            <div class="requisito-item">
+                <span class="req-codigo">[NF002] Requisito não funcional 02:</span>
+                <div class="req-texto">Dados de pagamento - prioridade alta.</div>
+            </div>
+
+            <div class="requisito-item">
+                <span class="req-codigo">[NF003] Requisito não funcional 03:</span>
+                <div class="req-texto">Suporte a 1000 pedidos simultâneos (confiabilidade). Prioridade média.</div>
+            </div>
+            </div>
+            <!-- 11. Aprovação -->
+            <div class="secao">
+                <h3>11. Aprovação</h3>
+                <table class="approval-table">
+                    <thead>
+                        <tr>
+                            <th>Integrante</th>
+                            <th>Assinatura</th>
+                            <th>Data</th>
+                        </tr>
+                        <tr>
+                            <td>Renato Freitas (DP)</td>
+                            <td><i class="fas fa-pen"></i> Renato F.</td>
+                            <td>24/02/2026</td>
+                        </tr>
+                        <tr>
+                            <td>João Gustavo (LT)</td>
+                            <td><i class="fas fa-pen"></i> J. Gustavo</td>
+                            <td>16/02/2026</td>
+                        </tr>
+                        <tr>
+                            <td>Sammy Lincon (EU)</td>
+                            <td><i class="fas fa-pen"></i> S. Lincon</td>
+                            <td>23/02/2026</td>
+                        </tr>
+                        <tr>
+                            <td>Jhonathan Monteneiro (GQ)</td>
+                            <td><i class="fas fa-pen"></i> J. Monteneiro</td>
+                            <td>20/02/2026</td>
+                        </tr>
+                        <tr>
+                            <td>Kevin Caio (GQ)</td>
+                            <td><i class="fas fa-pen"></i> K. Caio</td>
+                            <td>21/02/2026</td>
+                        </tr>
+                </table>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            <hr>
+        </div>
+</body>
+</html>
