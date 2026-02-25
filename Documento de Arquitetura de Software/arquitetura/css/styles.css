@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #666;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.pdf-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 50px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    min-height: 1123px; /* A4 height approximation */
+}
+
+/* Header Styles */
+.header-section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+}
+
+.project-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.document-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.version {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.managers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.managers-table td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+}
+
+.manager-label {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.email {
+    font-style: italic;
+    color: #0066cc;
+}
+
+/* Revision Table */
+.revision-section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0 10px 0;
+}
+
+.revision-table,
+.approval-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.revision-table th,
+.revision-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+.revision-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.revision-table td {
+    height: 30px;
+}
+
+/* Table of Contents */
+.toc-section {
+    margin: 30px 0;
+    page-break-after: auto;
+}
+
+.toc-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+.toc-item a {
+    text-decoration: none;
+    color: #000;
+}
+
+.toc-item a:hover {
+    text-decoration: underline;
+}
+
+.indent-1 {
+    margin-left: 20px;
+}
+
+.page-number {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Content Boxes */
+.content-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0 20px 0;
+    background-color: #fafafa;
+    font-style: italic;
+    color: #333;
+    min-height: 60px;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 30px;
+    page-break-inside: avoid;
+}
+
+/* Approval Table */
+.approval-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.approval-table th,
+.approval-table td {
+    border: 1px solid #000;
+    padding: 12px;
+    text-align: left;
+}
+
+.approval-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.approval-table td {
+    height: 50px;
+}
+
+.mark {
+    background-color: #ffff00;
+    font-weight: bold;
+    padding: 2px 5px;
+}
+
+/* Page Break Handling */
+@media print {
+    body {
+        background-color: white;
+        padding: 0;
+    }
+    
+    .pdf-container {
+        box-shadow: none;
+        padding: 25px;
+    }
+    
+    .toc-section {
+        page-break-after: always;
+    }
+}
+
+/* Table Styles */
+table {
+    font-size: 14px;
+}
+
+td, th {
+    vertical-align: top;
+}
+
+/* Empty Cell Placeholder */
+td:empty::before {
+    content: "_______________";
+    color: #999;
+    opacity: 0.5;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .pdf-container {
+        padding: 20px;
+    }
+    
+    .managers-table,
+    .revision-table,
+    .approval-table {
+        font-size: 12px;
+    }
+    
+    td:empty::before {
+        content: "_____";
+    }
+}
+
+/* Additional Styles for PDF-like Appearance */
+.pdf-container {
+    position: relative;
+}
+
+.pdf-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 95%, #eee 100%);
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* Section Numbering */
+section h2::before {
+    font-weight: bold;
+}
+
+/* Link Styles */
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0066cc;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .pdf-container::before {
+        display: none;
+    }
+    
+    .content-box {
+        border: 1px solid #000;
+        background-color: #fff;
+    }
+}

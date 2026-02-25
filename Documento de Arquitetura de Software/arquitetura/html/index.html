@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento de Arquitetura de Software - Delivery</title>
+    <link rel="stylesheet" href="">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #666;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.pdf-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 50px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    min-height: 1123px; /* A4 height approximation */
+}
+
+/* Header Styles */
+.header-section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+}
+
+.project-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.document-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.version {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.managers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.managers-table td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+}
+
+.manager-label {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.email {
+    font-style: italic;
+    color: #0066cc;
+}
+
+/* Revision Table */
+.revision-section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0 10px 0;
+}
+
+.revision-table,
+.approval-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.revision-table th,
+.revision-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+.revision-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.revision-table td {
+    height: 30px;
+}
+
+/* Table of Contents */
+.toc-section {
+    margin: 30px 0;
+    page-break-after: auto;
+}
+
+.toc-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+.toc-item a {
+    text-decoration: none;
+    color: #000;
+}
+
+.toc-item a:hover {
+    text-decoration: underline;
+}
+
+.indent-1 {
+    margin-left: 20px;
+}
+
+.page-number {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Content Boxes */
+.content-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0 20px 0;
+    background-color: #fafafa;
+    font-style: italic;
+    color: #333;
+    min-height: 60px;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 30px;
+    page-break-inside: avoid;
+}
+
+/* Approval Table */
+.approval-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.approval-table th,
+.approval-table td {
+    border: 1px solid #000;
+    padding: 12px;
+    text-align: left;
+}
+
+.approval-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.approval-table td {
+    height: 50px;
+}
+
+.mark {
+    background-color: #ffff00;
+    font-weight: bold;
+    padding: 2px 5px;
+}
+
+/* Page Break Handling */
+@media print {
+    body {
+        background-color: white;
+        padding: 0;
+    }
+    
+    .pdf-container {
+        box-shadow: none;
+        padding: 25px;
+    }
+    
+    .toc-section {
+        page-break-after: always;
+    }
+}
+
+/* Table Styles */
+table {
+    font-size: 14px;
+}
+
+td, th {
+    vertical-align: top;
+}
+
+/* Empty Cell Placeholder */
+td:empty::before {
+    content: "_______________";
+    color: #999;
+    opacity: 0.5;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .pdf-container {
+        padding: 20px;
+    }
+    
+    .managers-table,
+    .revision-table,
+    .approval-table {
+        font-size: 12px;
+    }
+    
+    td:empty::before {
+        content: "_____";
+    }
+}
+
+/* Additional Styles for PDF-like Appearance */
+.pdf-container {
+    position: relative;
+}
+
+.pdf-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 95%, #eee 100%);
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* Section Numbering */
+section h2::before {
+    font-weight: bold;
+}
+
+/* Link Styles */
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0066cc;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .pdf-container::before {
+        display: none;
+    }
+    
+    .content-box {
+        border: 1px solid #000;
+        background-color: #fff;
+    }
+}
+</style>
+
+</head>
+<body>
+    <div class="pdf-container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="project-title">Presença prime - delivery</div>
+            <div class="document-title">Documento de Arquitetura de Software</div>
+            <div class="version">Versão 1.2</div>
+            
+            <table class="managers-table">
+                <tr>
+                    <td class="manager-label">Gestor do projeto</td>
+                    <td class="manager-label">Gerente do projeto</td>
+                </tr>
+                <tr>
+                    <td>Renato Freitas De Araujo Aguiar</td>
+                    <td>João Gustavo</td>
+                </tr>
+                <tr>
+                    <td class="email">renatofreitaszin@gmail.com</td>
+                    <td class="email">joaogusta02@gmail.com</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Revision History -->
+        <div class="revision-section">
+            <h2>Histórico de Revisões</h2>
+            <table class="revision-table">
+                <thead>
+                    <tr>
+                        <th>Versão</th>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th>Autor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.0</td>
+                        <td>18/02/2026</td>
+                        <td>Troca do visual</td>
+                        <td>Renato</td>
+                    </tr>
+                    <tr>
+                        <td>1.1</td>
+                        <td>20/02/2026</td>
+                        <td>Novas estruturas</td>
+                        <td>Jhonathan</td>
+                    </tr>
+                    <tr>
+                        <td>1.2</td>
+                        <td>24/02/2026</td>
+                        <td>Finalização do trabalho e adicionais: especificação dos atores (entregador, cliente, administração)</td>
+                        <td>Renato</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc-section">
+            <h2>Sumário</h2>
+            <div class="toc-item">
+                <a href="#introducao">1. INTRODUÇÃO</a>
+                <span class="page-number">1</span>
+            </div>
+            <div class="toc-item indent-1">
+                <a href="#finalidade">1.1 Finalidade</a>
+                <span class="page-number">1</span>
+            </div>
+            <div class="toc-item indent-1">
+                <a href="#escopo">1.2 Escopo</a>
+                <span class="page-number">1</span>
+            </div>
+            <div class="toc-item indent-1">
+                <a href="#definicoes">1.3 Definições, Acrônimos e Abreviações</a>
+                <span class="page-number">2</span>
+            </div>
+            <div class="toc-item indent-1">
+                <a href="#referencias">1.4 Referências</a>
+                <span class="page-number">2</span>
+            </div>
+            <div class="toc-item">
+                <a href="#representacao">2. REPRESENTAÇÃO ARQUITETURAL</a>
+                <span class="page-number">3</span>
+            </div>
+            <div class="toc-item">
+                <a href="#requisitos">3. REQUISITOS E RESTRIÇÕES ARQUITETURAIS</a>
+                <span class="page-number">3</span>
+            </div>
+            <div class="toc-item">
+                <a href="#visao-casos-uso">4. VISÃO DE CASOS DE USO</a>
+                <span class="page-number">4</span>
+            </div>
+            <div class="toc-item indent-1">
+                <a href="#casos-uso-significantes">4.1 Casos de Uso significantes para a arquitetura</a>
+                <span class="page-number">4</span>
+            </div>
+            <div class="toc-item">
+                <a href="#visao-logica">5. VISÃO LÓGICA</a>
+                <span class="page-number">5</span>
+            </div>
+            <div class="toc-item">
+                <a href="#aprovacao">6. APROVAÇÃO</a>
+                <span class="page-number">6</span>
+            </div>
+        </div>
+
+        <!-- Content Sections -->
+        <section id="introducao">
+            <h2>1. INTRODUÇÃO</h2>
+            
+            <h3 id="finalidade">1.1 Finalidade</h3>
+            <div class="content-box">
+                O sistema "Presença prime - delivery" tem como finalidade conectar clientes a restaurantes parceiros e entregadores autônomos, permitindo pedidos de refeições com rastreamento em tempo real. O projeto foi idealizado para otimizar a experiência de delivery, oferecendo um aplicativo intuitivo para o cliente, um painel de controle para a administração e um aplicativo dedicado para entregadores.
+            </div>
+
+            <h3 id="escopo">1.2 Escopo</h3>
+            <div class="content-box">
+                Esta documentação descreve a arquitetura de software do sistema de delivery, abrangendo os subsistemas de cliente (mobile app), entregador (mobile app) e administração (web dashboard). O documento apresenta as decisões arquiteturais, tecnologias utilizadas, fluxos de informação e a interação entre os componentes.
+            </div>
+
+            <h3 id="definicoes">1.3 Definições, Acrónimos e Abreviações</h3>
+            <div class="content-box">
+                • API: Interface de Programação de Aplicações<br>
+                • BPMN: Business Process Model and Notation<br>
+                • Cliente: Usuário que solicita o delivery<br>
+                • Entregador: Profissional autônomo que realiza a entrega<br>
+                • Admin: Gestor responsável pela administração do sistema (restaurantes, entregadores, finanças)<br>
+                • Backbone: Funcionalidades essenciais para o funcionamento do sistema
+            </div>
+
+            <h3 id="referencias">1.4 Referências</h3>
+            <div class="content-box">
+                • Documentação do Spring Boot (backend)<br>
+                • Documentação do React Native (mobile)<br>
+                • Modelagem BPMN 2.0<br>
+                • Padrões de projeto GoF (Gang of Four)<br>
+                • Referências de arquitetura de microsserviços (Martin Fowler)
+            </div>
+        </section>
+
+        <section id="representacao">
+            <h2>2. REPRESENTAÇÃO ARQUITETURAL</h2>
+            <div class="content-box">
+                A arquitetura é baseada em microsserviços, com separação clara entre os domínios: cliente, entregador e administração. A comunicação é feita via APIs REST e mensageria assíncrona (para atualizações de status). Esta visão é destinada a desenvolvedores, arquitetos de software e gestores de TI, demonstrando a interação entre front-end (aplicativos) e back-end (serviços).
+            </div>
+        </section>
+
+        <section id="requisitos">
+            <h2>3. REQUISITOS E RESTRIÇÕES ARQUITETURAIS</h2>
+            <div class="content-box">
+                • Linguagem: Java (Spring Boot) para microsserviços; React Native para apps mobile; React para web admin.<br>
+                • Plataforma: AWS (Amazon Web Services) com containers Docker e orquestração Kubernetes.<br>
+                • Segurança: Autenticação via JWT (JSON Web Tokens), criptografia de dados sensíveis, HTTPS em todas as comunicações.<br>
+                • Restrições: Latência máxima de 2s para atualização de status de entrega; disponibilidade de 99.9%; escalabilidade para 2000 pedidos simultâneos.
+            </div>
+        </section>
+
+        <section id="visao-casos-uso">
+            <h2>4. VISÃO DE CASOS DE USO</h2>
+            <div class="content-box">
+                Os requerimentos principais do sistema (backbone) incluem: realizar pedido (cliente), aceitar corrida (entregador) e gerenciar operação (administração). A descrição dos casos de uso e seus fluxos estão detalhados nos diagramas.
+            </div>
+
+            <h3 id="casos-uso-significantes">4.1 Casos de Uso significantes para a arquitetura</h3>
+            <div class="content-box">
+                • UC01 - Realizar Pedido (Cliente): Cliente seleciona itens, confirma endereço e efetua pagamento. O sistema notifica restaurante e busca entregador.<br>
+                • UC02 - Gerenciar Entregas (Entregador): Visualizar corridas disponíveis, aceitar entrega, atualizar status (a caminho, entregue).<br>
+                • UC03 - Administrar Plataforma (Admin): Gerenciar restaurantes, visualizar histórico de pedidos, gerar relatórios financeiros.<br>
+                • BPMN: Fluxo completo desde o pedido até a entrega, com pontos de decisão (pagamento aprovado/recusado, entregador encontrado/não encontrado).
+            </div>
+        </section>
+
+        <section id="visao-logica">
+            <h2>5. VISÃO LÓGICA</h2>
+            <div class="content-box">
+                Principais classes do sistema:<br>
+                • Cliente (id, nome, endereço, históricoPedidos)<br>
+                • Entregador (id, nome, veículo, status, localização)<br>
+                • Pedido (id, itens, valorTotal, status, clienteId, entregadorId)<br>
+                • Restaurante (id, nome, cardápio, endereço)<br>
+                • Pagamento (id, pedidoId, método, status)<br>
+                • Relacionamentos: Pedido pertence a um Cliente e pode ser associado a um Entregador; Restaurante fornece os itens do Pedido.
+            </div>
+        </section>
+
+        <section id="aprovacao">
+            <h2>6. APROVAÇÃO</h2>
+            <table class="approval-table">
+                <thead>
+                    <tr>
+                        <th colspan="3"><span class="mark">Aprovações</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Integrantes</th>
+                        <th>Assinaturas</th>
+                        <th>Data</th>
+                    </tr>
+                    <tr>
+                        <td>Renato</td>
+                        <td>Renato F.</td>
+                        <td>24/02/2026</td>
+                    </tr>
+                    <tr>
+                        <td>João</td>
+                        <td>J. Gustavo</td>
+                        <td>24/02/2026</td>
+                    </tr>
+                    <tr>
+                        <td>Jhonathan</td>
+                        <td>J. Monteneiro</td>
+                        <td>24/02/2026</td>
+                    </tr>
+                    <tr>
+                        <td>Sammy</td>
+                        <td>S. Lincon</td>
+                        <td>24/02/2026</td>
+                    </tr>
+                    <tr>
+                        <td>Kevin</td>
+                        <td>K. Caio</td>
+                        <td>24/02/2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>
